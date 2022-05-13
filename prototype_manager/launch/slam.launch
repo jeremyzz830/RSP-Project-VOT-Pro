@@ -1,0 +1,14 @@
+<launch>
+
+    <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch">
+        <arg name="slam_methods" default="gmapping" />
+    </include>
+
+    <include file="$(find timed_roslaunch)/timed_roslaunch.launch">
+        <arg name="time" value="4" />
+        <arg name="pkg" value="prototype_manager" />
+        <arg name="file" value="manager.launch" />
+        <arg name="node_name" value="timed_roslaunch" />
+    </include>
+
+</launch>

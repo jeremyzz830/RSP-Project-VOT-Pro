@@ -1,0 +1,16 @@
+<launch>
+
+    <arg name = "control_mode" default="auto"/>
+
+    <node name = "auto_move_node"
+    type = "auto_move_node"
+    pkg = "auto_move"
+    if="$(eval arg('control_mode') == 'auto')"/>
+
+    <node name = "teleop_twist_keyboard"
+    type = "teleop_twist_keyboard.py"
+    pkg = "teleop_twist_keyboard"
+    args = "_speed:=0.1 _turn:=0.2"
+    if="$(eval arg('control_mode') == 'teleop')"
+    launch-prefix="gnome-terminal --command"/>
+</launch>

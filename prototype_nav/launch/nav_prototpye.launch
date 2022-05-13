@@ -1,0 +1,18 @@
+<launch>
+
+    <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
+        <arg name="map_file" value="/tmp/map.yaml"/>
+    </include>
+
+    <rosparam command="load" file="/tmp/stop_position.yaml"/>
+
+    <node pkg="prototype_nav" type="nav_prototype_init_node" name="prototype_nav" output="screen"/>
+
+    <include file="$(find timed_roslaunch)/timed_roslaunch.launch">
+        <arg name="time" value="2" />
+        <arg name="pkg" value="prototype_nav" />
+        <arg name="file" value="auto_move.launch" />
+    </include>
+
+
+</launch>
