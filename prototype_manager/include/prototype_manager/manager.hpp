@@ -16,7 +16,7 @@ private:
     ros::Subscriber finalposeSub_;
     ros::Rate rate;
 
-    double p_x, p_y;
+    double p_x, p_y, q_z, q_w;
 
     dynamic_reconfigure::Server<prototype_manager::ManagerConfig> manager_server;
     dynamic_reconfigure::Server<prototype_manager::ManagerConfig>::CallbackType callback;
