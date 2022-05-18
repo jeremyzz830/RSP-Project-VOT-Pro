@@ -53,7 +53,61 @@ Generally, Raspberry Pi only transmits the data and control commands as a "slave
 
 ## System Setting for Raspberry Pi
 
-This part will briefly introduce how to install a Raspbian based system on the Raspberry Pi 
+This part will briefly introduce how to install a Raspbian based system on the Raspberry Pi.
+Install Linux based on Raspbian
+WARNING: The SDcard should have at least 8 GB of empty space in order to install Linux on Raspberry Pi 3.
+
+We provide the Linux distro image based on Raspbian. They are pre-installed with ROS and ROS-packages related TurtleBot3. It supports the TurtleBot3 Burger and Waffle Pi model. In this distro image, non-free software like Wolfram, Mathematica, Minecraft Pi and Oracle Java SE are removed.
+
+Remote PC
+Download the Linux distro image based on Raspbian for TurtleBot3
+download link
+SHA256: 7a868c275169b1f02c04617cc0cce9654fd8222623c78b22d0a27c73a9609398
+After download, unzip the downloaded file.
+Guide to burn the image to SD card
+Visit etcher.io and download and install the Etcher SD card image utility.
+Run Etcher and select the Linux image you downloaded on your computer or laptop.
+Select the SD card drive.
+Click Burn to transfer the image to the SD card.
+(other methods to burn) You can use ‘dd’ command in Linux or use application ‘win32 Disk Imager’ in Windows. For a complete guide, take a look here (for Linux users) and here (for Windows users)
+TurtleBot PC
+After the installation, you can login with username pi and password turtlebot. In this case, you have to connect your Raspberry Pi to your monitor using an HDMI cable, and connect your keyboard and mouse to the Raspberry Pi.
+
+Expand filesystem to use a whole SD card.
+sudo raspi-config
+(select 7 Advanced Options > A1 Expand Filesystem)
+Guide to connecting to a wireless network
+
+Synchronize and set computers’ date and time by querying a Network Time Protocol (NTP) server
+sudo apt-get install ntpdate
+sudo ntpdate ntp.ubuntu.com
+If you want to change the Password, Locale and Timezone setting (Optional):
+sudo raspi-config > 1 Change User Password
+sudo raspi-config > 4 Localisation Options > I1 Change Locale
+sudo raspi-config > 4 Localisation Options > I2 Change Timezone
+Network configuration for ROS (reference link)
+  nano ~/.bashrc
+  (modify `localhost` to REMOTE_PC_IP and RASPBERRY_PI_3_IP)
+
+  export ROS_MASTER_URI=http://REMOTE_PC_IP:11311
+  export ROS_HOSTNAME=RASPBERRY_PI_3_IP
+  source ~/.bashrc
+Remote PC
+Once you’re done the wireless configuration, you can connect to Raspberry Pi via SSH from your desktop or laptop (reference link):
+ssh pi@192.168.xxx.xxx (The IP 192.168.xxx.xxx is your Raspberry Pi's IP or hostname)
+NOTE: Differences from the official Raspbian Stretch
+
+It based on Raspbian Stretch with desktop, the Raspbian based on Debian Stretch
+Removed non-free software like Wolfram, Mathematica, Minecraft Pi and Oracle Java SE
+Removed libreoffice to reduce image size
+Enabled SSH and Camera function using raspi-config
+Change the password: turtlebot
+Installed software for ROS and TurtleBot3
+ROS Kinetic Kame and dependency software
+raspicam_node package for Raspberry Pi Camera
+hls_lfcd_lds_driver package for Laser Distance Sensor
+turtlebot3 and turtlebot3_msgs packages for TutleBot3
+Installed ROS Packages (132 packages): actionlib, actionlib_msgs, angles, bond, bond_core, bondcpp, bondpy, camera_calibration_parsers, camera_info_manager, catkin, class_loader, cmake_modules, collada_parser, collada_urdf, common_msgs, compressed_image_transport, control_msgs, cpp_common, cv_bridge, diagnostic_aggregator, diagnostic_analysis, diagnostic_common_diagnostics, diagnostic_msgs, diagnostic_updater, diagnostics, dynamic_reconfigure, eigen_conversions, eigen_stl_containers, executive_smach, filters, gencpp, geneus, genlisp, genmsg, gennodejs, genpy, geometric_shapes, geometry, geometry_msgs, hls_lfcd_lds_driver, image_transport, joint_state_publisher, kdl_conversions, kdl_parser, message_filters, message_generation, message_runtime, mk, nav_msgs, nodelet, nodelet_core, nodelet_topic_tools, octomap (plain cmake), opencv3 (plain cmake), orocos_kdl (plain cmake), pluginlib, python_orocos_kdl (plain cmake), python_qt_binding, random_numbers, raspicam_node, resource_retriever, robot, robot_model, robot_state_publisher, ros, ros_base, ros_comm, ros_core, rosbag, rosbag_migration_rule, rosbag_storage, rosbash, rosboost_cfg, rosbuild, rosclean, rosconsole, rosconsole_bridge, roscpp, roscpp_core, roscpp_serialization, roscpp_traits, roscreate, rosgraph, rosgraph_msgs, roslang, roslaunch, roslib, roslint, roslisp, roslz4, rosmake, rosmaster, rosmsg, rosnode, rosout, rospack, rosparam, rospy, rosserial_msgs, rosserial_python, rosservice, rostest, rostime, rostopic, rosunit, roswtf, self_test, sensor_msgs, shape_msgs, smach, smach_msgs, smach_ros, smclib, std_msgs, std_srvs, stereo_msgs, tf, tf_conversions, tf2, tf2_kdl, tf2_msgs, tf2_py, tf2_ros, topic_tools, trajectory_msgs, turtlebot3_bringup, turtlebot3_msgs, urdf, urdf_parser_plugin, visualization_msgs, xacro, xmlrpcpp
 
 # I. Prerequisites
 
@@ -199,8 +253,6 @@ As the goals are published, the “nav_simulation_init_node” subscribes to the
 $ roslaunch my_tbot3_workcontrol project_init.launch control_mode:=auto
 ```
 
-![mapping_rviz.gif](/home/jeremy/vot_ws/simulation_ws/src/DEMO/mapping_rviz.gif)
-![mapping_gazebo.gif](/home/jeremy/vot_ws/simulation_ws/src/DEMO/mapping_gazebo.gif)
 
 ## For navigation and goal detection
 
@@ -208,8 +260,6 @@ $ roslaunch my_tbot3_workcontrol project_init.launch control_mode:=auto
 $ roslaunch my_tbot3_nav nav_simulation.launch 
 ```
 
-![mapping_rviz.gif](/home/jeremy/vot_ws/simulation_ws/src/DEMO/nav_rviz.gif)
-![mapping_gazebo.gif](/home/jeremy/vot_ws/simulation_ws/src/DEMO/nav_gazebo.gif)
 
 <br></br>
 
