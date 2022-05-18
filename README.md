@@ -23,7 +23,7 @@
 
 [Introduction](#Introduction)
 
-[TurtleBot Configuration](#I. TurtleBot-Configuration)
+[TurtleBot Configuration](#TurtleBot-Configuration)
 
 [Remote PC Configuration](#Remote-PC-Configuration)
 
