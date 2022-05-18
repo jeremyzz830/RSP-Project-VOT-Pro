@@ -25,15 +25,7 @@
 
 [TurtleBot Configuration](#TurtleBot-Configuration)
 
-​	[System Setting for Raspberry Pi](##System-Setting-for-Raspberry-Pi)
-
-[Prerequisites](#I-Prerequisites)
-
-[Running Tutorial](#II-Running-Tutorial)
-
-[Simulation Demo](#III-Simulation-Demo)
-
-[Prototype Demo](#IV-Prototype-Demo)
+[Remote PC Configuration](#Remote-PC-Configuration)
 
 
 
