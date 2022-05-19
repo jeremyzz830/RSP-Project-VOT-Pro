@@ -23,11 +23,11 @@
 
 [Introduction](#Introduction)
 
-[TurtleBot Configuration](#I.-TurtleBot-Configuration)
+[TurtleBot Configuration](#i-TurtleBot-Configuration)
 
-[Remote PC Configuration](#II.-Remote-PC-Configuration)
+[Remote PC Configuration](##ii-remote-pc-configuration)
 
-[Running Tutorial](#III.-Running-Tutorial)
+[Running Tutorial](#iii-Running-Tutorial)
 
 
 
