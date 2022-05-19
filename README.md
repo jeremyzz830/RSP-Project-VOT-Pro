@@ -111,15 +111,19 @@ sudo raspi-config
  - **Step 4: Access to Turtlebot from Remote PC**
 	Once you’re done the wireless configuration, you can connect to Raspberry Pi via SSH from your desktop or laptop (reference link): ssh pi@192.168.xxx.xxx (The IP 192.168.xxx.xxx is your Raspberry Pi's IP or hostname)
 
-NOTE: Differences from the official Raspbian Stretch
-
-It's based on Raspbian Stretch with desktop, the Raspbian based on Debian Stretch  
-Removed non-free software like Wolfram, Mathematica, Minecraft Pi and Oracle Java SE  
-Removed libreoffice to reduce image size  
-Enabled SSH and Camera function using raspi-config  
-Change the password: turtlebot  
-Installed software for ROS and TurtleBot3 ROS Kinetic Kame and dependency software raspicam_node package for Raspberry Pi Camera, hls_lfcd_lds_driver package for Laser Distance Sensor, turtlebot3 and turtlebot3_msgs packages for TutleBot3  
-Installed ROS Packages (132 packages): actionlib, actionlib_msgs, angles, bond, bond_core, bondcpp, bondpy, camera_calibration_parsers, camera_info_manager, catkin, class_loader, cmake_modules, collada_parser, collada_urdf, common_msgs, compressed_image_transport, control_msgs, cpp_common, cv_bridge, diagnostic_aggregator, diagnostic_analysis, diagnostic_common_diagnostics, diagnostic_msgs, diagnostic_updater, diagnostics, dynamic_reconfigure, eigen_conversions, eigen_stl_containers, executive_smach, filters, gencpp, geneus, genlisp, genmsg, gennodejs, genpy, geometric_shapes, geometry, geometry_msgs, hls_lfcd_lds_driver, image_transport, joint_state_publisher, kdl_conversions, kdl_parser, message_filters, message_generation, message_runtime, mk, nav_msgs, nodelet, nodelet_core, nodelet_topic_tools, octomap (plain cmake), opencv3 (plain cmake), orocos_kdl (plain cmake), pluginlib, python_orocos_kdl (plain cmake), python_qt_binding, random_numbers, raspicam_node, resource_retriever, robot, robot_model, robot_state_publisher, ros, ros_base, ros_comm, ros_core, rosbag, rosbag_migration_rule, rosbag_storage, rosbash, rosboost_cfg, rosbuild, rosclean, rosconsole, rosconsole_bridge, roscpp, roscpp_core, roscpp_serialization, roscpp_traits, roscreate, rosgraph, rosgraph_msgs, roslang, roslaunch, roslib, roslint, roslisp, roslz4, rosmake, rosmaster, rosmsg, rosnode, rosout, rospack, rosparam, rospy, rosserial_msgs, rosserial_python, rosservice, rostest, rostime, rostopic, rosunit, roswtf, self_test, sensor_msgs, shape_msgs, smach, smach_msgs, smach_ros, smclib, std_msgs, std_srvs, stereo_msgs, tf, tf_conversions, tf2, tf2_kdl, tf2_msgs, tf2_py, tf2_ros, topic_tools, trajectory_msgs, turtlebot3_bringup, turtlebot3_msgs, urdf, urdf_parser_plugin, visualization_msgs, xacro, xmlrpcpp
+> **Note**:
+> Differences from the official Raspbian Stretch
+> It's based on Raspbian Stretch with desktop, the Raspbian based on Debian Stretch  
+> Removed non-free software like Wolfram, Mathematica, Minecraft Pi and Oracle Java SE  
+> Removed libreoffice to reduce image size  
+> Enabled SSH and Camera function using raspi-config
+>   
+> **Change the password:** turtlebot  
+> 
+> Installed software for ROS and TurtleBot3 ROS Kinetic Kame and dependency software raspicam_node package for Raspberry Pi Camera, hls_lfcd_lds_driver package for Laser Distance Sensor, turtlebot3 and turtlebot3_msgs packages for TutleBot3  
+> 
+> Installed ROS Packages (132 packages): 
+> actionlib, actionlib_msgs, angles, bond, bond_core, bondcpp, bondpy, camera_calibration_parsers, camera_info_manager, catkin, class_loader, cmake_modules, collada_parser, collada_urdf, common_msgs, compressed_image_transport, control_msgs, cpp_common, cv_bridge, diagnostic_aggregator, diagnostic_analysis, diagnostic_common_diagnostics, diagnostic_msgs, diagnostic_updater, diagnostics, dynamic_reconfigure, eigen_conversions, eigen_stl_containers, executive_smach, filters, gencpp, geneus, genlisp, genmsg, gennodejs, genpy, geometric_shapes, geometry, geometry_msgs, hls_lfcd_lds_driver, image_transport, joint_state_publisher, kdl_conversions, kdl_parser, message_filters, message_generation, message_runtime, mk, nav_msgs, nodelet, nodelet_core, nodelet_topic_tools, octomap (plain cmake), opencv3 (plain cmake), orocos_kdl (plain cmake), pluginlib, python_orocos_kdl (plain cmake), python_qt_binding, random_numbers, raspicam_node, resource_retriever, robot, robot_model, robot_state_publisher, ros, ros_base, ros_comm, ros_core, rosbag, rosbag_migration_rule, rosbag_storage, rosbash, rosboost_cfg, rosbuild, rosclean, rosconsole, rosconsole_bridge, roscpp, roscpp_core, roscpp_serialization, roscpp_traits, roscreate, rosgraph, rosgraph_msgs, roslang, roslaunch, roslib, roslint, roslisp, roslz4, rosmake, rosmaster, rosmsg, rosnode, rosout, rospack, rosparam, rospy, rosserial_msgs, rosserial_python, rosservice, rostest, rostime, rostopic, rosunit, roswtf, self_test, sensor_msgs, shape_msgs, smach, smach_msgs, smach_ros, smclib, std_msgs, std_srvs, stereo_msgs, tf, tf_conversions, tf2, tf2_kdl, tf2_msgs, tf2_py, tf2_ros, topic_tools, trajectory_msgs, turtlebot3_bringup, turtlebot3_msgs, urdf, urdf_parser_plugin, visualization_msgs, xacro, xmlrpcpp
 
 &nbsp;
 
@@ -229,7 +233,7 @@ $ rosrun camera_calibration cameracalibrator.py --size 8x6 --square 0.25 image:=
 
 For detailed operations, refer to this [link](wiki.ros.org/camera_calibration)
 
-
+> Conduct camera calibration is necessary for the object detection mission. We get the intrinsic parameter matrix through this process and the we can do the perspective projection reversely to find the 3D position and orientation of a specific object. The detailed information and consideration can be found at [Find Circle Explanation](/Docs/FIndCircleExplanation.md)
 
 ## Workflow
 
