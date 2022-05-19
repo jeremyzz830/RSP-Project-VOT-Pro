@@ -136,7 +136,7 @@ To make everything work, the hardwares need to be connected correctly as followi
 - LiDar connects to the Raspberry Pi through USB port.
 - OPENCR connects to the Raspberry Pi through USB port.
 - Raspi Camera connects to the Raspberry Pi through video serial port.
-- The Raspberry Pi is powered by the OPENCR through GPIO pin #4 and #6 [Raspi GPIO](pinout.xyz)
+- The Raspberry Pi is powered by the OPENCR through GPIO pin #4 and #6 [Raspi GPIO](https://pinout.xyz/)
 
 &nbsp;
 
